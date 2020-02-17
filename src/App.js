@@ -1,29 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      count: 0,
-      message: 'initial'
-    }
-  }
+const App = () => {
+  const [count, setcount] = useState(0);
+  const [message, setMessage] = useState('initial')
+  return (
+    <>
+      <h2>{count}</h2>
+      <button onClick={() => setcount(count + 1)}>countUp</button>
+      <button onClick={() => setcount(count - 1)}>countDown</button>
 
-  render() {
-    return(
-      <>
-        <h2>{this.state.count}</h2>
-        <button onClick={() => this.setState({...this.state, count: this.state.count + 1})}>countUp</button>
-        <button onClick={() => this.setState({...this.state, count: this.state.count - 1})}>countDown</button>
-        <div>
-          <h2>{this.state.message}</h2>
-          <input type="text" value={this.state.message} onChange={(e) => this.setState({...this.state, message:e.target.value})} />
-        </div>
-      </>
-    )
-  }
+      <div>
+      <h2>{message}</h2>
+      <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
+      </div>
+    </>
+  );
 }
 
 export default App;
