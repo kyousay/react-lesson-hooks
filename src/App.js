@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 const App = () => {
   const [count, setcount] = useState(0);
   const [message, setMessage] = useState('initial')
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  },[count])
   return (
     <>
       <h2>{count}</h2>
